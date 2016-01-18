@@ -1,0 +1,14 @@
+{
+  "name": "fepp",
+  "version": "0.1.0",
+  "description": "Front-end Exception & Performance Platform ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "fengzheqi",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
