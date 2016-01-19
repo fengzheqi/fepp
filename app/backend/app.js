@@ -23,7 +23,7 @@ app.set('env', app.get('env') || 'development');
 /**
  * ÅäÖÃÊı¾İ¿â
  */
-//require('./lib/database')(app.get('env'));
+require('./lib/database')(app.get('env'));
 
 
 module.exports = app;

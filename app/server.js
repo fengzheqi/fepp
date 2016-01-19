@@ -35,7 +35,7 @@ if (app.get('env') == 'development') {
     app.set('port', config.production.port);
     app.use(express.static(path.join(__dirname, './frontend')));
 
-    app.all('/!*', function(req, res){
+    app.all('/*', function(req, res){
         res.sendFile(path.join(__dirname, './frontend/index.html'));
     });
 }
