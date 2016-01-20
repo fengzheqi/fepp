@@ -1,6 +1,6 @@
 /**
  * server.js
- * 主程序入口文件
+ * app鍚姩绋嬪簭
  * Created by zheqi on 2016/1/18.
  */
 
@@ -15,7 +15,7 @@ var fs      = require('fs'),
 
 
 /**
- * 配置开发环境：development
+ * 鍒ゆ柇杩愯鐜锛岄粯璁ゆ槸development
  */
 if (app.get('env') == 'development') {
     app.use(logger('dev'));
