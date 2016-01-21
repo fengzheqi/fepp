@@ -1,13 +1,13 @@
 /**
  * app.js
- * expressÅäÖÃÖ÷ÎÄ¼ş
+ * expressä¸»ç¨‹åº
  * Created by zheqi on 2016/1/18.
  */
 
 'use strict';
 
 /**
- * ±äÁ¿ÉùÃ÷
+ * å®šä¹‰å˜é‡
  */
 var express     = require('express'),
     app         = express(),
@@ -16,14 +16,20 @@ var express     = require('express'),
     config      = JSON.parse(fs.readFileSync(path.join(__dirname, '../config.json'), 'utf8'));
 
 /**
- * ÅäÖÃÔËĞĞ»·¾³
+ * è®¾ç½®é»˜è®¤è¿è¡Œç¯å¢ƒ
  */
 app.set('env', app.get('env') || 'development');
 
 /**
- * ÅäÖÃÊı¾İ¿â
+ * é…ç½®æ•°æ®åº“ç¯å¢ƒ
  */
 require('./lib/database')(app.get('env'));
+
+/**
+ * é…ç½®å‰å°æ¨¡æ¿
+ */
+app.set('views', '../frontend/views');
+app.set('viewe engine', 'ejs');
 
 
 module.exports = app;
