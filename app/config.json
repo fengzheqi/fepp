@@ -10,6 +10,15 @@
       "port": 27017,
       "user": "",
       "password": ""
+    },
+    "mail": {
+
+      "service": "Gmail",
+
+      "auth": {
+        "user": "guser@gmail.com",
+        "pass": "gpassword"
+      }
     }
   },
   "production": {
@@ -23,6 +32,15 @@
       "port": 27017,
       "user": "",
       "password": ""
+    },
+    "mail": {
+
+      "service": "Gmail",
+
+      "auth": {
+        "user": "guser@gmail.com",
+        "pass": "gpassword"
+      }
     }
   }
 }
