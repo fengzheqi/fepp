@@ -23,6 +23,16 @@
     "angular-bootstrap": "~1.1.0",
     "jquery": "~2.2.0",
     "bootstrap": "~3.3.6",
-    "bootstrap-sass": "bootstrap-sass-official#~3.3.6"
+    "bootstrap-sass": "bootstrap-sass-official#~3.3.6",
+    "angular-animate": "~1.4.9",
+    "angular-cookies": "~1.4.9",
+    "angular-resource": "~1.4.9",
+    "angular-route": "~1.4.9",
+    "angular-touch": "~1.4.9",
+    "angular-ui-router": "~0.2.16",
+    "json3": "~3.3.2",
+    "lodash": "~4.0.1",
+    "es5-shim": "~4.5.0",
+    "angular-sanitize": "~1.4.9"
   }
 }
