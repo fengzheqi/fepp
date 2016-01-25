@@ -12,7 +12,7 @@ var path        = require('path'),
     authDir     = fs.readdirSync(path.join(__dirname, './auth'));
 
 var isLoggedIn = function(req, res, next) {
-    if (!req,isAuthenticated()) {
+    if (!req.isAuthenticated()) {
         res.sendStatus(401);
     } else {
         next();
@@ -23,7 +23,7 @@ var ExpressRouter = function(app, passport) {
     routesDir.forEach(function(fileName) {
         if (fileName.indexOf('.js') > -1) {
             var routeName = fileName.substr(0, fileName.length-3);
-            app.use('/'+routeName, require('./routes/' + routeName)(isLoggedIn()));
+            app.use('/'+routeName, require('./routes/' + routeName)(isLoggedIn));
         }
     });
 
