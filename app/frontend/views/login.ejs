@@ -2,12 +2,12 @@
 
 <div class="wrapper">
     <div class="logo">
-        <h1>LOGIN PAGE</h1>
+        <h1>登录界面</h1>
     </div>
     <div class="lg-body">
         <div class="inner">
             <div id="lg-head">
-                <p><span class="font-bold">Adminity</span>: Please login to access the control panel.</p>
+                <p><span class="font-bold">提示</span>：请输入用户名和密码</p>
                 <div class="separator"></div>
             </div>
             <div class="login">
@@ -15,23 +15,23 @@
                     <fieldset>
                         <ul>
                             <li id="usr-field">
-                                <input class="input required" name="name" type="text" size="26" minlength ="1" placeholder="Username..." />
+                                <input class="input required" name="username" type="text" size="26" minlength ="1" placeholder="用户名..." />
                             </li>
                             <li id="psw-field">
-                                <input class="input required" name="pass" type="password" size="26" minlength="1" placeholder="Password..." />
-                            </li>
-                            <li class="checkbox">
-                                <input class="checkbox" type="checkbox" id="remember-me" value="remember" />
-                                <label for="remember-me" class="checkbox-text">Remeber Me</label>
+                                <input class="input required" name="password" type="password" size="26" minlength="1" placeholder="密码..." />
                             </li>
                             <li>
-                                <input class="submit" type="submit" value=""/>
+                                <input type="checkbox" id="remember-me" value="remember" />
+                                <label for="remember-me" class="checkbox-text">记住账号</label>
+                            </li>
+                            <li>
+                                <button type="submit" class="btn btn-sm btn-primary">&nbsp;登&nbsp;录&nbsp;</button>
                             </li>
                         </ul>
                     </fieldset>
                 </form>
           <span id="lost-psw">
-           <a href="#">I forgot my password</a>
+           <a href="#">忘记密码？</a>
           </span>
             </div>
         </div>
