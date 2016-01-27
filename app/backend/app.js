@@ -100,13 +100,13 @@ app.use(session({
 
 
 /**
- * 初始化passport
+ * 初始化并启动passport
  *
  */
 app.use(passport.initialize());
 
 /**
- * 登录持久化
+ * passport利用express的session来追踪用户的session信息
  *
  */
 app.use(passport.session());

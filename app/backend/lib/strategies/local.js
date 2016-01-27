@@ -28,13 +28,16 @@ module.exports = function(env, passport, transporter) {
         newEndToken.save(callback);
     };
 
+    /**
+     * 注册操作
+     */
     passport.use('local-signup', new LocalStrategy({
         usernameField: 'email',
         passwordField: 'password',
         passReqToCallback: true
     },
     function(req, email, password, done) {
-        process.nextTick(function() {
+        process.nextTick(function() {       // 一旦当前时间循环完成，就执行函数
             User.findOne({'email': email}, function(err, user) {
                 if (err) {return done(err);}
                 if (user) {
@@ -49,7 +52,6 @@ module.exports = function(env, passport, transporter) {
                     newUser.emailKey = validMailKey;
                     newUser.save(function(err) {
                         if (err) {throw err;}
-
                         var mailOptions = require(path.join(__dirname, '../../templates/confirm-mail'))(email, req.body.fullname, validMailKey);
                         transporter.sendMail(mailOptions, function(error, info) {
                             if (error) { console.log(error); }
@@ -63,6 +65,10 @@ module.exports = function(env, passport, transporter) {
     }
     ));
 
+
+    /**
+     * 登录操作
+     */
     passport.use('local-signin', new LocalStrategy({
         usernameField : 'email',
         passwordField : 'password',
@@ -95,87 +101,33 @@ module.exports = function(env, passport, transporter) {
                 Remember
                     .findOne({login: cookieLogin, serial_id: cookieId})
                     .exec(function (err, endToken) {
-
-                        if (err) {
-
-                            return done(err);
-
-                        }
-
-                        if(!endToken) {
-
-                            return done(null, null);
-
-                        }
-
+                        if (err) {return done(err);}
+                        if(!endToken) {return done(null, null);}
                         if(endToken && endToken.token !== cookieToken) {
-
                             endToken.remove(function (err) {
-
-                                if (err) {
-
-                                    return done(err);
-
-                                }
-
-
-
+                                if (err) {return done(err);}
                                 var mailOptions = require(path.join(__dirname, '../../templates/theft-mail'))(cookieLogin);
-
                                 transporter.sendMail(mailOptions, function (err, info) {
-
-                                    if (err) {
-                                        console.log(err);
-                                    }
-
+                                    if (err) {console.log(err);}
                                     console.log(info.response);
-
                                 });
-
-
-
                                 return done(null, false, req.flash('signInMessage', 'theft tentative detected.'));
-
                             });
-
-                        }
-
-                        else {
-
+                        } else {
                             newEndToken(cookieLogin, cookieId, function (err) {
-
-                                if (err) {
-                                    return done(err);
-                                }
-
+                                if (err) {return done(err);}
                                 endToken.remove(function (err) {
-
-                                    if (err) {
-                                        return done(err);
-                                    }
-
+                                    if (err) {return done(err);}
                                     User.findOne({email: cookieLogin}).exec(function (err, user) {
-                                        if (err) {
-                                            return done(err);
-                                        }
-
+                                        if (err) {return done(err);}
                                         return done(null, user);
-
                                     });
-
                                 });
-
                             });
-
                         }
-
                     });
-            }
-
-            else {
-
+            } else {
                 return done(null, null);
-
             }
         }
     }

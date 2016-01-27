@@ -12,12 +12,10 @@
       "password": ""
     },
     "mail": {
-
       "service": "Gmail",
-
       "auth": {
-        "user": "guser@gmail.com",
-        "pass": "gpassword"
+        "user": "fengzheqiyx@gmail.com",
+        "pass": "gmail@2045635683"
       }
     }
   },
@@ -34,12 +32,10 @@
       "password": ""
     },
     "mail": {
-
       "service": "Gmail",
-
       "auth": {
-        "user": "guser@gmail.com",
-        "pass": "gpassword"
+        "user": "fengzheqiyx@gmail.com",
+        "pass": "gmail@2045635683"
       }
     }
   }

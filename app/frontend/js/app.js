@@ -42,7 +42,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider',
                 templateUrl: 'views/404.ejs',
                 controller: '404Ctrl'
             })
-            /*.when('/admin', {
+            .when('/admin', {
                 templateUrl: 'views/admin.ejs',
                 controller: 'AdminCtrl',
                 resolve: {loggedin: isLoggerIn}
@@ -54,7 +54,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider',
             .when('/unvalidate', {
                 templateUrl: 'views/mail.html',
                 controller: 'ValidateCtrl'
-            })*/
+            })
             .otherwise({
                 redirctorTo: '/404'
             });
