@@ -41,7 +41,8 @@ module.exports = function(env, passport, transporter) {
             User.findOne({'email': email}, function(err, user) {
                 if (err) {return done(err);}
                 if (user) {
-                    return done(null, false, req,flash('signupMessage', 'email already there!'))
+                    //return done(null, false, req.flash('signupMessage', 'email already there!'))
+                    return done(null, false, { message: 'email already there!' })
                 } else {
                     var validMailKey = Math.random().toString(36).substr(2, 10);
                     var newUser = new User();

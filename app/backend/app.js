@@ -1,6 +1,6 @@
 /**
  * app.js
- * express主程序
+ * 配置express框架中各个变量
  * Created by zheqi on 2016/1/18.
  */
 
@@ -9,18 +9,18 @@
 /**
  * 定义变量
  */
-var express     = require('express'),
-    app         = express(),
-    passport    = require('passport'),
-    flash           = require('connect-flash'),
-    cookieParser    = require('cookie-parser'),
-    bodyParser      = require('body-parser'),
-    session         = require('express-session'),
-    csrf 			= require('csurf'),
-    path        = require('path'),
-    fs          = require('fs'),
-    nodemailer  = require('nodemailer'),
-    config      = JSON.parse(fs.readFileSync(path.join(__dirname, '../config.json'), 'utf8')),
+var express         = require('express'),
+    app             = express(),
+    passport        = require('passport'),                      //配置登录策略
+    flash           = require('connect-flash'),                 //配置flash，用于前台传输数据
+    cookieParser    = require('cookie-parser'),                 //配置cookie
+    bodyParser      = require('body-parser'),                   //配置bodyParse，用于解析get和post中字段
+    session         = require('express-session'),               //配置session
+    csrf 			= require('csurf'),                         //配置csrf保护
+    path            = require('path'),
+    fs              = require('fs'),
+    nodemailer      = require('nodemailer'),                    //配置邮件管理
+    config          = JSON.parse(fs.readFileSync(path.join(__dirname, '../config.json'), 'utf8')),
     strategiesDir 	= fs.readdirSync(path.join(__dirname, './lib/strategies')),
     modelsDir		= fs.readdirSync(path.join(__dirname, './models'));
 
@@ -121,7 +121,7 @@ app.use(flash());
  * 配置 CSRF 保护
  *
  */
-app.use(csrf());
+//app.use(csrf());
 
 /**
  * Create a token called 'XSRF-TOKEN' with value managed by csrf middleware.
@@ -130,10 +130,10 @@ app.use(csrf());
  * More info here : http://stackoverflow.com/a/27426757/2904349
  *
  */
-app.use(function(req, res, next) {
-    res.cookie('XSRF-TOKEN', req.csrfToken());
-    next();
-});
+//app.use(function(req, res, next) {
+//    res.cookie('XSRF-TOKEN', req.csrfToken());
+//    next();
+//});
 
 /**
  * 配置后端路径

@@ -1,6 +1,6 @@
 /**
  * server.js
- * app启动程序
+ * 配置系统环境
  * Created by zheqi on 2016/1/18.
  */
 

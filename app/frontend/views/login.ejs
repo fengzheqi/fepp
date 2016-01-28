@@ -1,39 +1,68 @@
 <!-- 登录页面 -->
-
-<div class="wrapper">
-    <div class="logo">
-        <h1></h1>
+<div class="col-xs-4 col-xs-offset-4 wrapper" ng-controller="LoginCtrl">
+    <div class="logo col-xs-12">
     </div>
-    <div class="lg-body">
-        <div class="inner">
+    <div class="lg-body col-xs-12">
             <div id="lg-head">
                 <p><span class="font-bold">提示</span>：请输入用户名和密码</p>
                 <div class="separator"></div>
             </div>
             <div class="login">
-                <form id="lg-form" method="post" action="">
-                    <fieldset>
-                        <ul>
-                            <li id="usr-field">
-                                <input class="input required" name="username" type="text" size="26" minlength ="1" placeholder="用户名..." />
-                            </li>
-                            <li id="psw-field">
-                                <input class="input required" name="password" type="password" size="26" minlength="1" placeholder="密码..." />
-                            </li>
-                            <li>
-                                <input type="checkbox" id="remember-me" value="remember" />
-                                <label for="remember-me" class="checkbox-text">记住账号</label>
-                            </li>
-                            <li>
-                                <button type="submit" class="btn btn-sm btn-primary">&nbsp;登&nbsp;录&nbsp;</button>
-                            </li>
-                        </ul>
-                    </fieldset>
-                </form>
-                <span id="lost-psw">
-                    <a href="#">忘记密码？</a>
-                </span>
+                <div method="post" action="/">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
+                            <input class="form-control" type="email" name="email" ng-model="user.email" placeholder="邮箱">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
+                            <input class="form-control" type="password" name="password" ng-model="user.password" placeholder="密码">
+                        </div>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="remember" ng-model="user.remember">
+                            <span class="checkbox-text">记住我</span>
+                        </label>
+                        <label id="login_error">{{signinMessage}}</label>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-sm btn-primary" ng-click="signin()">&nbsp;登&nbsp;录&nbsp;</button>
+                        <button type="button" class="btn btn-sm btn-default" ng-click="signupModal()">&nbsp;注&nbsp;册&nbsp;</button>
+                        <span id="lost_psw"><a href="#">忘记密码？</a></span>
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
 </div>
+
+<script type="text/ng-template" id="signup.html">
+    <div class="modal-header">
+        <h3 class="modal-title">注册用户</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="fullname">姓名：</label>
+            <input type="text" class="form-control" type="name" name="fullname" ng-model="user.fullname" placeholder="姓名"/>
+        </div>
+        <div class="form-group">
+            <label for="email">邮箱：</label>
+            <input type="text" class="form-control" type="email" name="email" ng-model="user.email" placeholder="电子邮箱"/>
+        </div>
+        <div class="form-group">
+            <label for="password">密码：</label>
+            <input type="text" class="form-control" type="password" name="password"  ng-model="user.password" placeholder="密码"/>
+        </div>
+        <div class="form-group">
+            <label for="pass2">再次输入密码：</label>
+            <input type="text" class="form-control" type="password" name="pass2" ng-model="user.pass2" placeholder="再次输入密码"/>
+        </div>
+        <p style="color:red;">{{signupMessage}}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="signup()">注册</button>
+        <button class="btn btn-warning" ng-click="cancel()">取消</button>
+    </div>
+</script>
