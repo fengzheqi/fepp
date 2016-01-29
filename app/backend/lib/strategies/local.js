@@ -41,7 +41,6 @@ module.exports = function(env, passport, transporter) {
             User.findOne({'email': email}, function(err, user) {
                 if (err) {return done(err);}
                 if (user) {
-                    //return done(null, false, req.flash('signupMessage', 'email already there!'))
                     return done(null, false, { message: 'email already there!' })
                 } else {
                     var validMailKey = Math.random().toString(36).substr(2, 10);
@@ -80,8 +79,8 @@ module.exports = function(env, passport, transporter) {
         if (email && password) {
             User.findOne({'email': email}, function(err, user) {
                 if (err) {return done(err);}
-                if (!user) {return done(null, false, req.flash('signinMessage', 'No user found.')); }
-                if (!user.validPassword(password)) {return done(null, false, req.flash('signinMessage', 'Wrong password.'));}
+                if (!user) {return done(null, false, {message: 'No user found.' }) }
+                if (!user.validPassword(password)) {return done(null, false, {message: 'Wrong password.'});}
                 if (req.body.remember) {
                     return Remember.find({login: email}).remove().exec(function (err) {
                         if (err) {return done(err);}

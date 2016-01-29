@@ -30,10 +30,9 @@ angular.module('fepp')
             $scope.signin =function() {
                 $http.post('/signin', $scope.user).success(function() {
                     $window.location.href = '/admin';
-                }).error(function(data, tentatives) {
-                    $scope.signinMessage = tentatives + ' ，请重新输入！';
-                });
-            };
+                }).error(function(data, status) {
+                    $scope.signinMessage = '用户名或密码不正确.';
+            })};
 
             $scope.signupModal = function() {
                 $uibModal.open({
@@ -44,19 +43,6 @@ angular.module('fepp')
             };
         }]);
 
-//angular.module('fepp')
-//    .controller('Signin', ['$scope', '$window', '$http',
-//        function($scope, $window, $http) {
-//            $scope.user = {};
-//            $scope.signinMessage = '';
-//            $scope.signin =function() {
-//                $http.post('/signin', $scope.user).success(function() {
-//                    $window.location.href = '/admin';
-//                }).error(function(data, tentatives) {
-//                    $scope.signinMessage = tentatives + ' ，请重新输入！';
-//                });
-//            };
-//        }]);
 
 angular.module('fepp')
     .controller('SignupCtrl', ['$scope', '$uibModalInstance', '$http', '$window',
@@ -67,7 +53,7 @@ angular.module('fepp')
                 $http.post('/signup', $scope.user).success(function() {
                     $window.location.href = '/admin';
                 }).error(function(data) {
-                    $scope.signupMessage = data;
+                    $scope.signupMessage = '邮箱已注册，请重试.';
                 });
             };
 

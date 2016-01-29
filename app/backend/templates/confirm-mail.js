@@ -13,9 +13,9 @@ module.exports = function (mailToSend, firstname, key) {
     var template = {
         from: 'meanjsDemo',
         to: mailToSend,
-        subject: 'Registration to meanjsDemo',
+        subject: 'Registration to FEPP',
         text: 	'',
-        html: 	'<h1>Thank you for joining meanjsDemo !</h1>\n'+
+        html: 	'<h1>Thank you for joining FEPP !</h1>\n'+
         '<p>Hi '+firstname+', welcome to the community. Here\'s '+
         'the confirmation mail for your registration on your website. If '+
         'you didn\'t ask this resgistration, please '+

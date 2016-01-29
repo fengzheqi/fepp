@@ -13,7 +13,7 @@ module.exports = function(passport) {
         res.send(req.user);
     });
 
-    router.post('/signin', passport.authenticate('local-signin', {failureFlash: true}), function(req, res) {
+    router.post('/signin', passport.authenticate('local-signin', { failureFlash: true }), function(req, res) {
         return Remember.findOne({login: req.user.email})
             .exec(function(err, data) {
                 if (err) {res.status(500).send(err);}

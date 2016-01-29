@@ -51,14 +51,12 @@ modelsDir.forEach(function (file) {
 });
 
 /**
- * 配置passport策略
+ * 配置bodyParser
  *
  */
-strategiesDir.forEach(function (file) {
-    if (file.indexOf('.js') >-1) {
-        require('./lib/strategies/'+file)(app.get('env'), passport, transporter);
-    }
-});
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 /**
  * 配置前台模板
@@ -71,13 +69,6 @@ app.set('viewe engine', 'ejs');
  *
  */
 app.use(cookieParser(config[app.get('env')].cookieSecret, { httpOnly: true }));
-
-/**
- * 配置bodyParser
- *
- */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
 
 /**
  * 配置session
@@ -97,7 +88,14 @@ app.use(session({
     saveUninitialized: true
 }));
 
-
+/**
+ * 配置passport策略
+ */
+strategiesDir.forEach(function (file) {
+    if (file.indexOf('.js') >-1) {
+        require('./lib/strategies/'+file)(app.get('env'), passport, transporter);
+    }
+});
 
 /**
  * 初始化并启动passport
