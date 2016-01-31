@@ -47,6 +47,17 @@ body {
   background-color: #404040;
   min-height: 720px; }
 
+.m-page-error {
+  height: 100%;
+  background: url(../../img/page-error.png);
+  background-size: 100% 100%; }
+  .m-page-error h1 {
+    font-size: 130px;
+    margin-top: 150px; }
+  .m-page-error h2 {
+    margin-top: 10px;
+    margin-bottom: 400px; }
+
 /* partials */
 .wrapper {
   position: absolute;

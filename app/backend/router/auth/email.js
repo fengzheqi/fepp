@@ -16,21 +16,17 @@ module.exports = function () {
      * 验证email
      *
      */
-    router.post('/validate', function (req, res) {
-        User.findOne({ emailKey: req.body.key }, function (err, user) {
-            if (err || !user) { return res.sendStatus(404); }
+    router.get('/validate', function (req, res) {
+        User.findOne({ emailKey: req.query.key }, function (err, user) {
+            if (err || !user) { return res.redirect('/404'); }
             if (user.emailConfirm === true) {
-                return res.sendStatus(403);
+                return res.redirect('/403');
             }
             else {
-                User.update({ emailKey: req.body.key }, { emailConfirm: true }, { multi: true }, function (err, nb) {
-                    if (err) { return res.sendStatus(404); }
-                    if (nb === 1) {
-                        res.sendStatus(200);
-                    }
-                    else {
-                        res.sendStatus(500);
-                    }
+                User.update({ emailKey: req.query.key }, { emailConfirm: true }, { multi: true }, function (err, numAffected) {
+                    if (err) {return res.redirect('/404');}
+                    if (numAffected === 1) {res.sendStatus(200);}
+                    else {res.sendStatus(500);}
                 });
             }
         });
@@ -42,15 +38,15 @@ module.exports = function () {
      * 没有验证email
      *
      */
-    router.post('/unvalidate', function (req, res) {
-        User.findOne({emailKey: req.body.key, email: req.body.email}, function (err, user) {
-            if (err || !user) { return res.sendStatus(404); }
+    router.get('/unvalidate', function (req, res) {
+        User.findOne({emailKey: req.query.key, email: req.query.email}, function (err, user) {
+            if (err || !user) { return res.redirect(404, '/404'); }
             if (user.emailConfirm === true) {
-                return res.sendStatus(403);
+                return res.redirect(403, '/403');
             }
             else {
                 User.remove({ _id: user._id}, function (err) {
-                    if (err) { return res.sendStatus(404); }
+                    if (err) { return res.redirect(404, '/404'); }
                     res.sendStatus(200);
                 });
             }

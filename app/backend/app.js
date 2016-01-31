@@ -119,7 +119,7 @@ app.use(flash());
  * 配置 CSRF 保护
  *
  */
-//app.use(csrf());
+app.use(csrf());
 
 /**
  * Create a token called 'XSRF-TOKEN' with value managed by csrf middleware.
@@ -128,10 +128,10 @@ app.use(flash());
  * More info here : http://stackoverflow.com/a/27426757/2904349
  *
  */
-//app.use(function(req, res, next) {
-//    res.cookie('XSRF-TOKEN', req.csrfToken());
-//    next();
-//});
+app.use(function(req, res, next) {
+    res.cookie('XSRF-TOKEN', req.csrfToken());
+    next();
+});
 
 /**
  * 配置后端路径

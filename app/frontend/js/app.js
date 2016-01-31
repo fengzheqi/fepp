@@ -39,8 +39,16 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider',
                 controller: 'MainCtrl'
             })
             .when('/404', {
-                templateUrl: 'views/404.ejs',
+                templateUrl: 'views/errors/404.ejs',
                 controller: '404Ctrl'
+            })
+            .when('/403', {
+                templateUrl: 'views/errors/403.ejs',
+                controller: '403Ctrl'
+            })
+            .when('/500', {
+                templateUrl: 'views/errors/500.ejs',
+                controller: '500Ctrl'
             })
             .when('/admin', {
                 templateUrl: 'views/admin.ejs',
