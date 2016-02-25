@@ -68,6 +68,18 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider',
             });
 
         $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
     }
 ]);
+
+
+//Then define the init function for starting up the application
+angular.element(document).ready(function() {
+    //Fixing facebook bug with redirect
+    if (window.location.hash === '#_=_') window.location.hash = '#!';
+
+    //Then init the app
+    angular.bootstrap(document, ['fepp']);
+});
+
 

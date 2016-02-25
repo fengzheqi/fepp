@@ -20,7 +20,7 @@ var express         = require('express'),
     path            = require('path'),
     fs              = require('fs'),
     nodemailer      = require('nodemailer'),                    //配置邮件管理
-    config          = JSON.parse(fs.readFileSync(path.join(__dirname, '../config.json'), 'utf8')),
+    config          = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/config.json'), 'utf8')),
     strategiesDir 	= fs.readdirSync(path.join(__dirname, './lib/strategies')),
     modelsDir		= fs.readdirSync(path.join(__dirname, './models'));
 

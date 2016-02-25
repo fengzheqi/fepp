@@ -5,7 +5,7 @@
 
 var path = require('path');
 var fs = require('fs');
-var config = JSON.parse(fs.readFileSync(path.join(__dirname, '../../config.json'), 'utf8'));
+var config = JSON.parse(fs.readFileSync(path.join(__dirname, '../../config/config.json'), 'utf8'));
 
 module.exports = function (mailToSend, firstname, key) {
 

@@ -11,7 +11,7 @@
  */
 var path        = require('path'),
     fs          = require('fs'),
-    config      = JSON.parse(fs.readFileSync(path.join(__dirname, '../../config.json'))),
+    config      = JSON.parse(fs.readFileSync(path.join(__dirname, '../../config/config.json'))),
     mongoose    = require('mongoose');
 
 /**

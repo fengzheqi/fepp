@@ -6,12 +6,13 @@
 
 'use strict';
 
-var fs      = require('fs'),
+var init    = require('./backend/lib/init')(),
+    fs      = require('fs'),
     express = require('express'),
     app     = require('./backend/app'),
     path    = require('path'),
     logger  = require('morgan'),
-    config  = JSON.parse(fs.readFileSync(path.join(__dirname, './config.json'), 'utf8'));
+    config  = JSON.parse(fs.readFileSync(path.join(__dirname, './config/config.json'), 'utf8'));
 
 
 /**
