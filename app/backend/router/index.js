@@ -3,14 +3,17 @@
  */
 'use strct';
 
-/**
- * 定义变量
- */
 var path        = require('path'),
     fs          = require('fs'),
     routesDir   = fs.readdirSync(path.join(__dirname, './routes')),
     authDir     = fs.readdirSync(path.join(__dirname, './auth'));
 
+/**
+ * 判断是否登录
+ * @param req
+ * @param res
+ * @param next
+ */
 var isLoggedIn = function(req, res, next) {
     if (!req.isAuthenticated()) {
         res.sendStatus(401);
@@ -19,6 +22,12 @@ var isLoggedIn = function(req, res, next) {
     }
 }
 
+/**
+ * 引入routes文件
+ * @param app app实例
+ * @param passport  passport实例
+ * @constructor
+ */
 var ExpressRouter = function(app, passport) {
     routesDir.forEach(function(fileName) {
         if (fileName.indexOf('.js') > -1) {

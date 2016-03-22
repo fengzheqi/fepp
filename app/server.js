@@ -26,7 +26,6 @@ if (app.get('env') == 'development') {
     app.use(express.static(path.join(__dirname, './tep')));
     app.use(express.static(path.join(__dirname, './frontend')));
 
-
     app.all('/*', function(req, res){
         res.sendFile(path.join(__dirname, './frontend/index.html'));
     })
@@ -41,7 +40,9 @@ if (app.get('env') == 'development') {
     });
 }
 
-
+/**
+ * 监听端口
+ */
 app.listen(app.get('port'), app.get('host'), function(){
     console.log('Server in ' + app.get('env') + ' environment running at ' + app.get('host') + ': ' + app.get('port'));
 });

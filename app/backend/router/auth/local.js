@@ -9,8 +9,18 @@ var express     = require('express'),
     Remember = mongoose.model('Remember');
 
 module.exports = function(passport) {
+    /**
+     * 注册
+     */
     router.post('/signup', passport.authenticate('local-signup', {failureFlash: true}), function(req, res) {
         res.send(req.user);
+    });
+
+    /**
+     *登录
+     */
+    router.get('/signedin', function(req, res) {
+        res.send(req.isAuthenticated() ? req.user : '0');
     });
 
     router.post('/signin', passport.authenticate('local-signin', { failureFlash: true }), function(req, res) {
@@ -21,10 +31,6 @@ module.exports = function(passport) {
                 return res.send(req.user);
             })
     })
-
-    router.get('/signedin', function(req, res) {
-        res.send(req.isAuthenticated() ? req.user : '0');
-    });
 
     router.post('/signout', function (req, res) {
         Remember.findOne({login: req.user.email}, function (err, token) {
@@ -43,6 +49,4 @@ module.exports = function(passport) {
 
 
     return router;
-
-
 }

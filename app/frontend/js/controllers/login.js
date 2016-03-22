@@ -28,7 +28,7 @@ angular.module('fepp')
             $scope.user = {};
             $scope.signinMessage = '';
             $scope.signin =function() {
-                $http.post('/signin', $scope.user).success(function() {
+                $http.post('/signin', $scope.user).success(function(user) {
                     $window.location.href = '/admin';
                 }).error(function(data, status) {
                     $scope.signinMessage = '用户名或密码不正确.';

@@ -52,7 +52,7 @@ module.exports = function(env, passport, transporter) {
                     newUser.emailKey = validMailKey;
                     newUser.save(function(err) {
                         if (err) {throw err;}
-                        var mailOptions = require(path.join(__dirname, '../../templates/confirm-mail'))(email, req.body.fullname, validMailKey);
+                        var mailOptions = require(path.join(__dirname, '../../templates/confirm-mail-cn'))(email, req.body.fullname, validMailKey);
                         transporter.sendMail(mailOptions, function(error, info) {
                             if (error) { console.log(error); }
                             console.log(info.response);
@@ -106,7 +106,7 @@ module.exports = function(env, passport, transporter) {
                         if(endToken && endToken.token !== cookieToken) {
                             endToken.remove(function (err) {
                                 if (err) {return done(err);}
-                                var mailOptions = require(path.join(__dirname, '../../templates/theft-mail'))(cookieLogin);
+                                var mailOptions = require(path.join(__dirname, '../../templates/theft-mail-cn'))(cookieLogin);
                                 transporter.sendMail(mailOptions, function (err, info) {
                                     if (err) {console.log(err);}
                                     console.log(info.response);
