@@ -108,6 +108,64 @@
         }
     }, true);
 
+    /**
+     * 获取用户客户端平台信息
+     *
+     */
+    function getPlatformInfo (){
+       return {
+           pathname : window.location.pathname,
+           appHost : window.location.host,
+           userAgent : window.navigator.userAgent,
+           platform : window.navigator.platform
+       };
+    };
 
+    /**
+     * 内存使用过多报警，初步设置在.85的阈值。
+     * 每个2秒检测内存使用情况，如果超过85%的使用量，则报警，同时取消定时检测。
+     */
+    var jsMemoryUsage = function () {
+        var usedJSHeapSize = jsMemoryObj.usedJSHeapSize;
+        var totalJSHeapSize = jsMemoryObj.totalJSHeapSize;
+        var jsHeapSizeLimit = jsMemoryObj.jsHeapSizeLimit;
+        if(usedJSHeapSize/totalJSHeapSize >= .85){
+            console.log('内存使用过多');
+            clearInterval(jsMemoryUsageTimer);
+            reportException(7, '内存使用过多，超过85%，请优化', '', '', '内存使用过多，超过85%，请优化');
+        }
+    };
+    var jsMemoryObj = window.performance.memory;
+    var jsMemoryUsageTimer;
+    if(jsMemoryObj){
+        jsMemoryUsageTimer = setInterval(jsMemoryUsage, 2000);
+    }else{
+        console.log('不支持内存检测');
+    }
+
+    /**
+     * 插入性能监控脚本函数
+     *
+     */
+    var addPerformanceJS = (function (document){
+        var script   = document.createElement("script");
+        script.type  = "text/javascript";
+        script.async = 'true';
+        var elem =  document.getElementById("feException");
+        script.src   = elem.src.replace('bookie', 'rookie');
+
+        return function (){
+            document.body.appendChild(script);
+        };
+    })(document);
+
+    //兼容不同版本浏览器，并插入性能脚本
+    var addFunctionOnWindowLoad = function(callback){
+        if(window.addEventListener){
+            window.addEventListener('load',callback,false);
+        }else{
+            window.attachEvent('onload',callback);
+        }
+    };
 
 })(window)
