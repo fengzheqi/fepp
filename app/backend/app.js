@@ -18,8 +18,9 @@ var express         = require('express'),
     session         = require('express-session'),               //配置session
     csrf 			= require('csurf'),                         //配置csrf保护
     path            = require('path'),
-    fs              = require('fs'),
     nodemailer      = require('nodemailer'),                    //配置邮件管理
+
+    fs              = require('fs'),
     config          = JSON.parse(fs.readFileSync(path.join(__dirname, '../config/config.json'), 'utf8')),
     strategiesDir 	= fs.readdirSync(path.join(__dirname, './lib/strategies')),
     modelsDir		= fs.readdirSync(path.join(__dirname, './models'));
@@ -49,17 +50,16 @@ modelsDir.forEach(function (file) {
 });
 
 /**
- * 配置bodyParser
- */
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-
-/**
  * 配置前台模板
  */
 app.set('views', '../frontend/views');
 app.set('viewe engine', 'ejs');
+
+/**
+ * 配置bodyParser
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /**
  * 配置cookie

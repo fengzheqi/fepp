@@ -35,7 +35,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider',
 
         $routeProvider
             .when('/', {
-                templateUrl: 'views/login.ejs',
+                templateUrl: 'views/login_temp.ejs',
                 controller: 'MainCtrl'
             })
             .when('/404', {

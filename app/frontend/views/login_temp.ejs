@@ -1,0 +1,95 @@
+<div class="row blur">
+<div class="form col-md-10 col-md-offset-1" ng-controller="LoginCtrl">
+    <div class="row" >
+
+        <div class="form-left col-md-6 ">
+            <p style="color:#fff;font-size: 50px;margin-top: 40px;text-align:center; background-color: rgba(160,179,176,0.5);margin-left:-15px" class="col-md-4">
+
+                FEPP
+            </p>
+            <div class="col-md-9 col-md-offset-2" style="clear:both;color:#fff;margin-top: 100px;">
+                <p style="line-height: 3;font-size:22px;">前端性能与异常监控平台</p>
+                <p style="line-height: 1.5;font-size:22px;">为了解决前端性能瓶颈、<br/>提高系统稳定性问题。<br/>为系统前端优化提供参考数据。</p>
+                <p style="color:#8c9492">系统开发与维护：</p>
+                <p><a href="">@Tommy-feng</a></p>
+            </div>
+
+        </div>
+        <div class="form-right col-md-6" >
+            <ul class="tab-group">
+                <li class="tab active"><a href="#signup">注册</a></li>
+                <li class="tab"><a href="#login">登录</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="signup">
+                    <h1>欢迎您注册！</h1>
+
+                    <form action="/">
+                        <div class="top-row">
+                            <div class="field-wrap">
+                                <label for="firstName">
+                                    姓 <span class="req">*</span>
+                                </label>
+                                <input type="text" required autocomplete="off"/>
+                            </div>
+                            <div class="field-wrap">
+                                <label for="lastName">
+                                    名字 <span class="req">*</span>
+                                </label>
+                                <input type="text" required autocomplete="off"/>
+                            </div>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="email">
+                                电子邮件 <span class="req">*</span>
+                            </label>
+                            <input type="email" required autocomplete="off"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password">
+                                密码 <span class="req">*</span>
+                            </label>
+                            <input type="password" required autocomplete="off"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password">
+                                确认密码 <span class="req">*</span>
+                            </label>
+                            <input type="password" required autocomplete="off"/>
+                        </div>
+
+                        <button type="submit" class="button button-block">开始体验</button>
+                    </form>
+                </div>
+
+                <div id="login">
+                    <h1>请您登录！</h1>
+
+                    <form action="">
+                        <div class="field-wrap">
+                            <label for="email">请输入邮箱</label>
+                            <input type="text" required autocomplete="off"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password">
+                                请输入密码
+                            </label>
+                            <input type="password" autocomplete="off"/>
+                        </div>
+
+                        <p class="forgot"><a href="#">忘记密码？</a></p>
+
+                        <button class="button button-block">登录</button>
+                    </form>
+                </div>
+            </div> <!-- tab-content -->
+        </div>
+    </div>
+
+</div>
+</div>
