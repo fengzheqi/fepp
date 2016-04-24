@@ -4,13 +4,15 @@
 
         <div class="form-left col-md-6 ">
             <p style="color:#fff;font-size: 50px;margin-top: 40px;text-align:center; background-color: rgba(160,179,176,0.5);margin-left:-15px" class="col-md-4">
-
                 FEPP
             </p>
-            <div class="col-md-9 col-md-offset-2" style="clear:both;color:#fff;margin-top: 100px;">
-                <p style="line-height: 3;font-size:22px;">前端性能与异常监控平台</p>
-                <p style="line-height: 1.5;font-size:22px;">为了解决前端性能瓶颈、<br/>提高系统稳定性问题。<br/>为系统前端优化提供参考数据。</p>
-                <p style="color:#8c9492">系统开发与维护：</p>
+            <div class="col-md-9" style="clear:both;color:#fff;margin-top: 100px;">
+                <p style="line-height: 1.5;font-size:24px;font-weight: bold;">前端性能与异常<br/>监控平台</p>
+                <p style="line-height: 1.5;font-size:20px;margin-top: 20px;">
+                    &clubs; 解决前端性能瓶颈<br/>
+                    &clubs; 保证系统运行稳定<br/>
+                    &clubs; 提升用户体验感受</p>
+                <p style="color:#8c9492;margin-top:50px;">系统开发与维护：</p>
                 <p><a href="">@Tommy-feng</a></p>
             </div>
 
@@ -35,7 +37,8 @@
                                        required autocomplete="off"
                                        ng-model="user.firstName"
                                        ng-keyup="toggleClass('firstName', $event)"
-                                       ng-blur="toggleClass('firstName', $event)"/>
+                                       ng-blur="toggleClass('firstName', $event)"
+                                       ng-focus="toggleClass('firstName', $event)"/>
                             </div>
                             <div class="field-wrap">
                                 <label for="lastName" ng-class="{'0':'','1':'active','2':'active highlight'}[lastName]">
@@ -45,7 +48,8 @@
                                        required autocomplete="off"
                                        ng-model="user.lastName"
                                        ng-keyup="toggleClass('lastName', $event)"
-                                       ng-blur="toggleClass('lastName', $event)"/>
+                                       ng-blur="toggleClass('lastName', $event)"
+                                       ng-focus="toggleClass('lastName', $event)"/>
                             </div>
                         </div>
 
@@ -57,7 +61,8 @@
                                    required autocomplete="off"
                                    ng-model="user.email"
                                    ng-keyup="toggleClass('newMail', $event)"
-                                   ng-blur="toggleClass('newMail', $event)" />
+                                   ng-blur="toggleClass('newMail', $event)"
+                                   ng-focus="toggleClass('newMail', $event)"/>
                         </div>
 
                         <div class="field-wrap">
@@ -68,7 +73,8 @@
                                    required autocomplete="off"
                                    ng-model="user.password"
                                    ng-keyup="toggleClass('newPassword', $event)"
-                                   ng-blur="toggleClass('newPassword', $event)" />
+                                   ng-blur="toggleClass('newPassword', $event)"
+                                   ng-focus="toggleClass('newPassword', $event)"/>
                         </div>
 
                         <div class="field-wrap">
@@ -79,7 +85,8 @@
                                    required autocomplete="off"
                                    ng-model="user.pass2"
                                    ng-keyup="toggleClass('newRepassword', $event)"
-                                   ng-blur="toggleClass('newRepassword', $event)"/>
+                                   ng-blur="toggleClass('newRepassword', $event)"
+                                   ng-focus="toggleClass('newRepassword', $event)"/>
                         </div>
 
                         <button type="button" class="button button-block" ng-click="signup()">开始体验</button>
@@ -98,7 +105,8 @@
                                    required autocomplete="off"
                                    ng-model="user.email"
                                    ng-keyup="toggleClass('mail', $event)"
-                                   ng-blur="toggleClass('mail', $event)"/>
+                                   ng-blur="toggleClass('mail', $event)"
+                                   ng-focus="toggleClass('mail', $event)"/>
                         </div>
 
                         <div class="field-wrap">
@@ -109,7 +117,8 @@
                                    required autocomplete="off"
                                    ng-model="user.password"
                                    ng-keyup="toggleClass('password', $event)"
-                                   ng-blur="toggleClass('password', $event)"/>
+                                   ng-blur="toggleClass('password', $event)"
+                                   ng-focus="toggleClass('password', $event)"/>
                         </div>
 
                         <div class="field-wrap">
@@ -120,7 +129,8 @@
                                    required autocomplete="off"
                                    ng-model="user.validateCode"
                                    ng-keyup="toggleClass('code', $event)"
-                                   ng-blur="toggleClass('code', $event)"/>
+                                   ng-blur="toggleClass('code', $event)"
+                                   ng-focus="toggleClass('code', $event)"/>
                         </div>
 
                         <div class="field-wrap rememberMe">

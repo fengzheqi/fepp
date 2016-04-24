@@ -28,18 +28,21 @@ angular.module('fepp')
             $scope.signinMessage = '';
             $scope.signupMessage = '';
             $scope.isActive = false;
-            $scope.signin =function() {
-                $http.post('/signin', $scope.user).success(function(user) {
-                    $window.location.href = '/admin';
-                }).error(function(data, status) {
-                    $scope.signinMessage = '用户名或密码不正确.';
-            })};
 
+            /**
+             * 切换登录与注册表单
+             * @param $event 事件对象
+             */
             $scope.changeOpt = function($event) {
                 $event.stopPropagation();
                 $scope.isActive = !$scope.isActive;
             };
 
+            /**
+             * 用户输入提示
+             * @param name 输入名
+             * @param $event 事件对象
+             */
             $scope.toggleClass = function(name, $event) {
                 if($event.currentTarget.value == '') {
                     $scope[name]=0;
@@ -47,34 +50,31 @@ angular.module('fepp')
                     switch ($event.type) {
                         case 'keyup':   $scope[name] = 2; break;
                         case 'blur':    $scope[name] = 1; break;
+                        case 'focus':   $scope[name] = 2; break;
                     }
                 }
             };
 
+            /**
+             * 用户登陆
+             */
+            $scope.signin =function() {
+                $http.post('/signin', $scope.user).success(function(user) {
+                    $window.location.href = '/admin';
+                }).error(function(data, status) {
+                    $scope.signinMessage = '用户名或密码不正确.';
+                });
+            };
+
+            /**
+             * 用户注册
+             */
+
             $scope.signup = function() {
                 $http.post('/signup', $scope.user).success(function() {
                     $window.location.href = '/admin';
                 }).error(function(data) {
                     $scope.signupMessage = '邮箱已注册，请重试.';
                 });
-            };
-        }]);
-
-
-angular.module('fepp')
-    .controller('SignupCtrl', ['$scope', '$uibModalInstance', '$http', '$window',
-        function($scope, $uibModalInstance, $http, $window) {
-            $scope.user = {};
-            $scope.signupMessage = '';
-            $scope.signup = function() {
-                $http.post('/signup', $scope.user).success(function() {
-                    $window.location.href = '/admin';
-                }).error(function(data) {
-                    $scope.signupMessage = '邮箱已注册，请重试.';
-                });
-            };
-
-            $scope.cancel = function() {
-                $uibModalInstance.dismiss('cancel');
             };
         }]);

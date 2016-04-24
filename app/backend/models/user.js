@@ -9,13 +9,13 @@ var mongoose        = require('mongoose'),
     bcrypt          = require('bcrypt-nodejs');
 
 var userSchema = mongoose.Schema({
-    firstName:      {type: String},
-    lastName:       {type: String},
-    email:          {type: String},
-    password:       {type: String},
-    emailConfirm:   Boolean,
-    emailKey:       String,
-    sessioncache:   String
+    firstName:      {type: String},     //姓
+    lastName:       {type: String},     //名字
+    email:          {type: String},     //电子邮件
+    password:       {type: String},     //密码
+    emailConfirm:   Boolean,            //邮件是否验证
+    emailKey:       String,             //邮件验证码
+    sessioncache:   String              //会话缓存
 });
 
 userSchema.methods.generateHash = function(password) {
