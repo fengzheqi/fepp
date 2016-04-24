@@ -45,7 +45,8 @@ module.exports = function(env, passport, transporter) {
                 } else {
                     var validMailKey = Math.random().toString(36).substr(2, 10);
                     var newUser = new User();
-                    newUser.fullname = req.body.fullname;
+                    newUser.firstName = req.body.firstName;
+                    newUser.lastName = req.body.lastName;
                     newUser.email = req.body.email;
                     newUser.password = newUser.generateHash(password);
                     newUser.emailConfirm = false;

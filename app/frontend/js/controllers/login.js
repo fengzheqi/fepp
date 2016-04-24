@@ -6,7 +6,6 @@
 angular.module('fepp')
     .controller('LoginCtrl', ['$scope', '$uibModal', '$http', '$window', '$cookieStore',
         function($scope, $uibModal, $http, $window, $cookieStore) {
-
             var isRemembered = function ($q, $cookies, $http, $timeout, $location, $cookieStore) {
                 var defered = $q.defer();
                 if ($cookies.remember) {
@@ -27,6 +26,8 @@ angular.module('fepp')
 
             $scope.user = {};
             $scope.signinMessage = '';
+            $scope.signupMessage = '';
+            $scope.isActive = false;
             $scope.signin =function() {
                 $http.post('/signin', $scope.user).success(function(user) {
                     $window.location.href = '/admin';
@@ -34,11 +35,27 @@ angular.module('fepp')
                     $scope.signinMessage = '用户名或密码不正确.';
             })};
 
-            $scope.signupModal = function() {
-                $uibModal.open({
-                    templateUrl: 'signup.html',
-                    controller:  'SignupCtrl',
-                    size: 'sm'
+            $scope.changeOpt = function($event) {
+                $event.stopPropagation();
+                $scope.isActive = !$scope.isActive;
+            };
+
+            $scope.toggleClass = function(name, $event) {
+                if($event.currentTarget.value == '') {
+                    $scope[name]=0;
+                } else {
+                    switch ($event.type) {
+                        case 'keyup':   $scope[name] = 2; break;
+                        case 'blur':    $scope[name] = 1; break;
+                    }
+                }
+            };
+
+            $scope.signup = function() {
+                $http.post('/signup', $scope.user).success(function() {
+                    $window.location.href = '/admin';
+                }).error(function(data) {
+                    $scope.signupMessage = '邮箱已注册，请重试.';
                 });
             };
         }]);

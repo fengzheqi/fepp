@@ -111,9 +111,6 @@ a {
     background: #1ab188;
     color: #ffffff; }
 
-.tab-content > div:last-child {
-  display: none; }
-
 h1 {
   text-align: center;
   color: #ffffff;
@@ -159,6 +156,11 @@ input, textarea {
     outline: 0;
     border-color: #1ab188; }
 
+input[type=checkbox] {
+  width: auto;
+  height: auto;
+  display: inline-block; }
+
 textarea {
   border: 2px solid #a0b3b0;
   resize: vertical; }
@@ -194,6 +196,14 @@ textarea {
   .button:hover, .button:focus {
     background: #179b77; }
 
+.rememberMe {
+  color: #fff; }
+  .rememberMe input {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    margin-right: 10px; }
+
 .button-block {
   display: block;
   width: 100%; }
@@ -201,5 +211,11 @@ textarea {
 .forgot {
   margin-top: -20px;
   text-align: right; }
+
+.j-show {
+  display: block; }
+
+.j-hide {
+  display: none; }
 
 /*# sourceMappingURL=main.css.map */
