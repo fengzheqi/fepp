@@ -1,59 +1,157 @@
-//@import "compass/css3";
+// 登录页面样式
 
-$body-bg: #c1bdba;
-$form-bg: #13232f;
-$white: #ffffff;
-
-$main: #1ab188;
-$main-light: lighten($main,5%);
-$main-dark: darken($main,5%);
-
-$gray-light: #a0b3b0;
-$gray: #ddd;
-
-$thin: 300;
-$normal: 400;
-$bold: 600;
-$br: 4px;
-
-a {
-  text-decoration:none;
-  color:$main;
-  transition:.5s ease;
-  &:hover {
-    color:$main-dark;
-  }
-}
-
-.blur {
-  background-image: url("/img/form_bg.png");
+.login-wrapper {
+  background-image: url("/img/login-bg.png");
   background-size: 100% 100%;
   height: inherit;
 }
 
-
-.form {
+.login-form {
   position:relative;
   top:50%;
   margin-top: -300px;
+  box-shadow:0 4px 10px 4px rgba($login-form-bg,.3);
 
-  box-shadow:0 4px 10px 4px rgba($form-bg,.3);
+  a {
+    color:$login-main;
+    transition:.5s ease;
+    &:hover {
+      color:$login-main-dark;
+    }
+  }
+
+  h1 {
+    text-align:center;
+    color:$white;
+    margin:0 0 40px;
+  }
+
+  input, textarea {
+    font-size:22px;
+    display:block;
+    width:100%;
+    height:100%;
+    padding:5px 10px;
+    background:none;
+    background-image:none;
+    border:1px solid $gray-light;
+    color:$white;
+    border-radius:0;
+    transition:border-color .25s ease, box-shadow .25s ease;
+    &:focus {
+      outline:0;
+      border-color:$login-main;
+    }
+  }
+
+  input[type=checkbox] {
+    width: auto;
+    height: auto;
+    display: inline-block;
+
+  }
+
+  textarea {
+    border:2px solid $gray-light;
+    resize: vertical;
+  }
 }
 
-.form-left {
+.login-form-left {
   background:url("/img/form-left-bg.png") no-repeat;
   background-size:100% 100%;
   height:600px;
+
+  > p {
+    color:#fff;
+    font-size: 50px;
+    margin-top: 40px;
+    text-align:center;
+    background-color: rgba(160,179,176,0.5);
+    margin-left:-15px
+  }
 }
 
-
-.form-right {
-  background:rgba($form-bg,.9);
+.login-form-right {
+  background:rgba($login-form-bg,.9);
   padding-top: 40px;
   height:600px;
+
+  .field-wrap {
+    position:relative;
+    margin-bottom:40px;
+  }
+
+  .button {
+    border:0;
+    outline:none;
+    border-radius:0;
+    padding:15px 0;
+    font-size:2rem;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    background:$login-main;
+    color:$white;
+    transition:all.5s ease;
+    -webkit-appearance: none;
+    &:hover, &:focus {
+      background:$login-main-dark;
+    }
+  }
+
+  .button-block {
+    display:block;
+    width:100%;
+  }
+
+  label {
+    position:absolute;
+    transform:translateY(6px);
+    left:13px;
+    color:rgba($white,.5);
+    transition:all 0.25s ease;
+    -webkit-backface-visibility: hidden;
+    pointer-events: none;
+    font-size:22px;
+    .req {
+      margin:2px;
+      color:$login-main;
+    }
+  }
+
+  label.active {
+    transform:translateY(50px);
+    left:2px;
+    font-size:14px;
+    .req {
+      opacity:0;
+    }
+  }
+
+  label.highlight {
+    color:$white;
+  }
 }
 
-.tab-group {
+.login-form-left-info {
+  clear:both;color:#fff;margin-top: 100px;
+  line-height: 1.5;
+  p:nth-child(1) {
+    font-size:24px;
+    font-weight: bold;
+  }
+  p:nth-child(2) {
+    font-size:20px;
+    margin-top: 20px;
+  }
+  p:nth-child(3) {
+    color:$gray-light;
+    margin-top:50px;
+  }
+}
+
+.login-tab-group {
   list-style:none;
   padding:0;
   margin:0 0 40px 0;
@@ -75,124 +173,34 @@ a {
     cursor:pointer;
     transition:.5s ease;
     &:hover {
-      background:$main-dark;
+      background:$login-main-dark;
       color:$white;
     }
   }
   .active a {
-    background:$main;
+    background:$login-main;
     color:$white;
   }
 }
 
-//.tab-content > div:last-child {
-//  display:none;
-//}
+.login-tab-content {
+  .top-row {
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
 
-
-h1 {
-  text-align:center;
-  color:$white;
-  font-weight:$thin;
-  margin:0 0 40px;
-}
-
-label {
-  position:absolute;
-  transform:translateY(6px);
-  left:13px;
-  color:rgba($white,.5);
-  transition:all 0.25s ease;
-  -webkit-backface-visibility: hidden;
-  pointer-events: none;
-  font-size:22px;
-  .req {
-    margin:2px;
-    color:$main;
-  }
-}
-
-label.active {
-  transform:translateY(50px);
-  left:2px;
-  font-size:14px;
-  .req {
-    opacity:0;
-  }
-}
-
-label.highlight {
-  color:$white;
-}
-
-input, textarea {
-  font-size:22px;
-  display:block;
-  width:100%;
-  height:100%;
-  padding:5px 10px;
-  background:none;
-  background-image:none;
-  border:1px solid $gray-light;
-  color:$white;
-  border-radius:0;
-  transition:border-color .25s ease, box-shadow .25s ease;
-  &:focus {
-    outline:0;
-    border-color:$main;
-  }
-}
-
-input[type=checkbox] {
-  width: auto;
-  height: auto;
-  display: inline-block;
-
-}
-
-textarea {
-  border:2px solid $gray-light;
-  resize: vertical;
-}
-
-.field-wrap {
-  position:relative;
-  margin-bottom:40px;
-}
-
-.top-row {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-
-  > div {
-    float:left;
-    width:48%;
-    margin-right:4%;
-    &:last-child {
-      margin:0;
+    > div {
+      float:left;
+      width:48%;
+      margin-right:4%;
+      &:last-child {
+        margin:0;
+      }
     }
   }
-}
 
-.button {
-  border:0;
-  outline:none;
-  border-radius:0;
-  padding:15px 0;
-  font-size:2rem;
-  font-weight:$bold;
-  text-transform:uppercase;
-  letter-spacing:.1em;
-  background:$main;
-  color:$white;
-  transition:all.5s ease;
-  -webkit-appearance: none;
-  &:hover, &:focus {
-    background:$main-dark;
-  }
 }
 
 .rememberMe {
@@ -205,20 +213,9 @@ textarea {
   }
 }
 
-.button-block {
-  display:block;
-  width:100%;
-}
-
 .forgot {
   margin-top:-20px;
   text-align:right;
 }
 
-.j-show {
-  display: block;
-}
 
-.j-hide {
-  display: none;
-}

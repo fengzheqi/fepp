@@ -2,8 +2,20 @@
 // Variables
 // =================================
 
-
+// 颜色定义
 $green:   #2f96b4;
 $red:     #bd362f;
 $yellow:  #faa732;
 $blue:    #0044cc;
+$white:   #ffffff;
+$gray:    #dddddd;
+
+$gray-light: #a0b3b0;
+
+// 登录页面
+$login-main: #1ab188;
+$login-main-light: lighten($login-main,5%);
+$login-main-dark: darken($login-main,5%);
+$login-form-bg: #13232f;
+
+

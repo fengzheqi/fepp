@@ -1,68 +1,155 @@
-<!-- 登录页面 -->
-<div class="col-xs-4 col-xs-offset-4 wrapper" ng-controller="LoginCtrl">
-    <div class="logo col-xs-12">
-    </div>
-    <div class="lg-body col-xs-12">
-            <div id="lg-head">
-                <p><span class="font-bold">提示</span>：请输入用户名和密码</p>
-                <div class="separator"></div>
-            </div>
-            <div class="login">
-                <div method="post" action="/">
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-user fa-lg"></i></span>
-                            <input class="form-control" type="email" name="email" ng-model="user.email" placeholder="邮箱">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-lock fa-lg"></i></span>
-                            <input class="form-control" type="password" name="password" ng-model="user.password" placeholder="密码">
-                        </div>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="remember" ng-model="user.remember">
-                            <span class="checkbox-text">记住我</span>
-                        </label>
-                        <label id="login_error">{{signinMessage}}</label>
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-sm btn-primary" ng-click="signin()">&nbsp;登&nbsp;录&nbsp;</button>
-                        <button type="button" class="btn btn-sm btn-default" ng-click="signupModal()">&nbsp;注&nbsp;册&nbsp;</button>
-                        <span id="lost_psw"><a href="#">忘记密码？</a></span>
-                    </div>
-                </div>
-            </div>
-    </div>
-</div>
+<div class="row login-wrapper">
+<div class="login-form col-md-10 col-md-offset-1" ng-controller="LoginCtrl">
+    <div class="row" >
 
-<script type="text/ng-template" id="signup.html">
-    <div class="modal-header">
-        <h3 class="modal-title">注册用户</h3>
+        <div class="login-form-left col-md-6 ">
+            <p class="col-md-4">FEPP</p>
+
+            <div class="col-md-9 login-form-left-info">
+                <p >前端性能与异常<br/>监控平台</p>
+                <p>&clubs; 解决前端性能瓶颈<br/>&clubs; 保证系统运行稳定<br/>&clubs; 提升用户体验感受</p>
+                <p>系统开发与维护：</p>
+                <p><a href="https://github.com/Tommy-feng">@Tommy-feng</a></p>
+            </div>
+
+        </div>
+        <div class="login-form-right col-md-6" >
+            <ul class="login-tab-group">
+                <li class="tab" ng-class="{'true':'','false':'active'}[isActive]">
+                    <a href="javascript:void(0)" ng-click="changeOpt($event)">注册</a>
+                </li>
+                <li class="tab" ng-class="{'true':'active','false':''}[isActive]">
+                    <a href="javascript:void(0)" ng-click="changeOpt($event)">登录</a>
+                </li>
+            </ul>
+
+            <div class="login-tab-content">
+                <div id="signup" ng-class="{'true':'j-hide','false':'j-show'}[isActive]">
+                    <h1>欢迎您注册！</h1>
+
+                    <form action="/">
+                        <div class="top-row">
+                            <div class="field-wrap">
+                                <label for="firstName" ng-class="{'0':'','1':'active','2':'active highlight'}[firstName]">
+                                    姓 <span class="req">*</span>
+                                </label>
+                                <input type="text"
+                                       required autocomplete="off"
+                                       ng-model="user.firstName"
+                                       ng-keyup="toggleClass('firstName', $event)"
+                                       ng-blur="toggleClass('firstName', $event)"
+                                       ng-focus="toggleClass('firstName', $event)"/>
+                            </div>
+                            <div class="field-wrap">
+                                <label for="lastName" ng-class="{'0':'','1':'active','2':'active highlight'}[lastName]">
+                                    名字 <span class="req">*</span>
+                                </label>
+                                <input type="text"
+                                       required autocomplete="off"
+                                       ng-model="user.lastName"
+                                       ng-keyup="toggleClass('lastName', $event)"
+                                       ng-blur="toggleClass('lastName', $event)"
+                                       ng-focus="toggleClass('lastName', $event)"/>
+                            </div>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="email" ng-class="{'0':'','1':'active','2':'active highlight'}[newMail]">
+                                电子邮件 <span class="req">*</span>
+                            </label>
+                            <input type="email"
+                                   required autocomplete="off"
+                                   ng-model="user.email"
+                                   ng-keyup="toggleClass('newMail', $event)"
+                                   ng-blur="toggleClass('newMail', $event)"
+                                   ng-focus="toggleClass('newMail', $event)"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password" ng-class="{'0':'','1':'active','2':'active highlight'}[newPassword]">
+                                密码 <span class="req">*</span>
+                            </label>
+                            <input type="password"
+                                   required autocomplete="off"
+                                   ng-model="user.password"
+                                   ng-keyup="toggleClass('newPassword', $event)"
+                                   ng-blur="toggleClass('newPassword', $event)"
+                                   ng-focus="toggleClass('newPassword', $event)"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password" ng-class="{'0':'','1':'active','2':'active highlight'}[newRepassword]">
+                                确认密码 <span class="req">*</span>
+                            </label>
+                            <input type="password"
+                                   required autocomplete="off"
+                                   ng-model="user.pass2"
+                                   ng-keyup="toggleClass('newRepassword', $event)"
+                                   ng-blur="toggleClass('newRepassword', $event)"
+                                   ng-focus="toggleClass('newRepassword', $event)"/>
+                        </div>
+
+                        <button type="button" class="button button-block" ng-click="signup()">开始体验</button>
+                    </form>
+                </div>
+
+                <div id="signin" ng-class="{'true':'j-show','false':'j-hide'}[isActive]">
+                    <h1>请您登录！</h1>
+
+                    <form action="">
+                        <div class="field-wrap">
+                            <label for="email" ng-class="{'0':'','1':'active','2':'active highlight'}[mail]">
+                                邮箱 <span class="req">*</span>
+                            </label>
+                            <input type="email"
+                                   required autocomplete="off"
+                                   ng-model="user.email"
+                                   ng-keyup="toggleClass('mail', $event)"
+                                   ng-blur="toggleClass('mail', $event)"
+                                   ng-focus="toggleClass('mail', $event)"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password" ng-class="{'0':'','1':'active','2':'active highlight'}[password]">
+                                密码 <span class="req">*</span>
+                            </label>
+                            <input type="password"
+                                   required autocomplete="off"
+                                   ng-model="user.password"
+                                   ng-keyup="toggleClass('password', $event)"
+                                   ng-blur="toggleClass('password', $event)"
+                                   ng-focus="toggleClass('password', $event)"/>
+                        </div>
+
+                        <div class="field-wrap">
+                            <label for="password" ng-class="{'0':'','1':'active','2':'active highlight'}[code]">
+                                验证码 <span class="req">*</span>
+                            </label>
+                            <input type="text"
+                                   required autocomplete="off"
+                                   ng-model="user.validateCode"
+                                   ng-keyup="toggleClass('code', $event)"
+                                   ng-blur="toggleClass('code', $event)"
+                                   ng-focus="toggleClass('code', $event)"/>
+                        </div>
+
+                        <div class="field-wrap rememberMe">
+                            <input type="checkbox" />
+                            <span>记住我</span>
+                        </div>
+
+
+                        <p class="forgot">
+                            <label id="login_error">{{signinMessage}}</label>
+                            <a href="#">忘记密码？</a>
+                        </p>
+
+                        <button type="button" class="button button-block" ng-click="signin()">登录</button>
+                    </form>
+                </div>
+            </div> <!-- tab-content -->
+        </div>
     </div>
-    <div class="modal-body">
-        <div class="form-group">
-            <label for="fullname">姓名：</label>
-            <input type="text" class="form-control" type="name" name="fullname" ng-model="user.fullname" placeholder="姓名"/>
-        </div>
-        <div class="form-group">
-            <label for="email">邮箱：</label>
-            <input type="text" class="form-control" type="email" name="email" ng-model="user.email" placeholder="电子邮箱"/>
-        </div>
-        <div class="form-group">
-            <label for="password">密码：</label>
-            <input type="text" class="form-control" type="password" name="password"  ng-model="user.password" placeholder="密码"/>
-        </div>
-        <div class="form-group">
-            <label for="pass2">再次输入密码：</label>
-            <input type="text" class="form-control" type="password" name="pass2" ng-model="user.pass2" placeholder="再次输入密码"/>
-        </div>
-        <p style="color:red;">{{signupMessage}}</p>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="signup()">注册</button>
-        <button class="btn btn-warning" ng-click="cancel()">取消</button>
-    </div>
-</script>
+
+</div>
+</div>
